@@ -1,0 +1,28 @@
+    span{
+      color:blue;
+      font-family:cursive;
+      font-size:12;
+    }
+
+    .hwstyle{
+      color: #39FF14;
+      font-size: 20;
+      font-style: italic;
+    }
+
+    .hwstyle2{
+      color: #FF007F;
+      font-size: 23;
+      font-weight: bold;
+    }
+
+    #hwstyle3{
+      color:	#BF40BF;
+      font-size: 32;
+      font-stretch: expanded;
+    }
+
+    body{
+      background-color: gray;
+      background-image: url('background.jpg');
+    }

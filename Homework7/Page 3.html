@@ -1,0 +1,64 @@
+<html>
+  <head>
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <style>
+        p{
+          text-align: center;
+        }
+      </style>
+    <title>Page 3</title>
+    <script>
+      function getInfo() {
+      var name = document.getElementById("fullName").value;
+      var email = document.getElementById("email").value;
+
+      window.alert("hello" + " " + name);
+      if (name=="") {
+          document.getElementById("fullName").focus();
+          alert("please enter full name")
+          event.preventDefault();
+          document.getElementById('fullName').style.borderColor = "red";
+        } else {
+          document.getElementById('fullName').style.borderColor = "black";
+        }
+      if (email=="") {
+          document.getElementById("email").focus();
+          alert("please enter email")
+          event.preventDefault();
+          document.getElementById('email').style.borderColor = "red";
+        } else {
+          document.getElementById('email').style.borderColor = "black";
+        }
+      if (!document.getElementById('yesToTerms').checked) {
+          //document.getElementById("yesToTerms").focus();
+          alert("please accept Termsl")
+          event.preventDefault();
+          document.getElementById('yesToTerms').parentNode.style.color = "red";
+        } else {
+          document.getElementById('yesToTerms').parentNode.style.color = "black";
+        }
+      }
+    </script>
+  </head>
+  <body>
+  <h1 style="text-align:center;">Contact Us Page</h1>
+  <p class="text-danger">Full Name</p>
+    <Form action="Page 3.html" type="Post">
+      <div  style="text-align:center;"> <input  style="text-align:center;" type="text" id="fullName"><br>
+  <p class="text-danger">Email</p>
+    <Form action="Page 3.html" type="Post">
+      <div  style="text-align:center;"> <input   type="text" id="email"> <div> <br>
+  <br/>
+  <br/>
+  <p>Yes, I accept the Term and Conditions<p/>
+    <input id="yesToTerms" type="checkbox" name="accept" value="yesToTerms"> yes<br>
+  <br/>
+    <button id="submitInfo" onclick="getInfo();">Submit</button>
+  <br/>
+  <br/>
+  <br/>
+  <p>Go to Previous Page</p>
+    <a  href="Homepage.html">Page 1</a>
+    <a  href="Page%202.html">Page 2</a>
+  </body>
+</html>
