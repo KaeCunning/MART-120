@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <title>Homework11 Game</title>
+  <body>
+  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script>
+  /*  if (keyIsDown(83))
+   {
+     y += 10;
+   } */
+    var mouseShapeX = 50;
+    var mouseShapeY = 50;
+
+    var triOneMove1 = 100;
+    var triOneMove2 = 80;
+    var triOneMove3 = 120;
+
+    var triTwoMove1 = 225;
+    var triTwoMove2 = 200;
+    var triTwoMove3 = 200;
+
+    var horizontalMove = 650;
+    var verticalMove = 380;
+    var youColor = '#0A931D';
+
+    var moveAmount = 3;
+
+
+
+    function setup() {
+    createCanvas(800, 800);
+    }
+
+    function draw()
+     {
+      background(220);
+      fill('#A81D1D');
+      rect(0,0,800,800);
+      fill('#8B1818');
+      rect(30,30,770,777);
+      fill('#000000');
+      rect(30,30,725,725);
+      fill('#CDCC00');
+      circle(775,778,10);
+      circle(20,778,10);
+      circle(775,15,10);
+      circle(20,15,10);
+      fill('#000FCD');
+      circle(700,778,25);
+      circle(500,778,25);
+      fill('#0A931D');
+      circle(400,778,25);
+      fill('#000000');
+      rect(580,768,50,20);
+      //you're character
+      fill(youColor);
+      square(horizontalMove,verticalMove,20);
+      //enemies
+      fill('#FF0000');
+      //triangle1
+      triangle(triOneMove1,175,triOneMove2,150,triOneMove3,150);
+      //triangle2
+      fill('#00FFFF');
+      triangle(120,triTwoMove1,80,triTwoMove2,120,triTwoMove3);
+      fill('#000000');
+      rect(20,380,20,80);
+      fill('#8B00FF');
+      circle(mouseShapeX,mouseShapeY,50 );
+      if (triOneMove3 >= 758)
+       {
+         triOneMove1= 30;
+         triOneMove2= 10;
+         triOneMove3= 50;
+
+       }
+      if (triOneMove1<=745) {
+      triOneMove1=triOneMove1+moveAmount;
+      triOneMove2=triOneMove2+moveAmount;
+      triOneMove3=triOneMove3+moveAmount;
+      }
+      if (triTwoMove1 >= 755 )
+       {
+         triTwoMove1= 50;
+         triTwoMove2= 25;
+         triTwoMove3= 25;
+
+       }
+      if (triTwoMove1<=800) {
+      triTwoMove1=triTwoMove1+moveAmount;
+      triTwoMove2=triTwoMove2+moveAmount;
+      triTwoMove3=triTwoMove3+moveAmount;
+      }
+      if (horizontalMove <=20 && verticalMove >=300 && verticalMove <= 380 ) {
+        fill(0);
+        stroke(5);
+        textSize(50);
+        fill('#FFFFFF');
+        text("winner winner", width/2-50, height/2-50);
+      }
+     }
+     function keyPressed()
+     {
+       if (key == 's') {
+         verticalMove+=15;
+       }
+        else if (key == 'w') {
+         verticalMove-=15;
+       }
+         else if (key == 'd') {
+         horizontalMove+=15;
+       }
+         else if (key == 'a') {
+         horizontalMove-=15;
+       }
+
+      }
+
+     function mouseClicked(){
+       mouseShapeX= mouseX;
+       mouseShapeY= mouseY;
+     }
+     </script>
+   </head>
+ </html>
