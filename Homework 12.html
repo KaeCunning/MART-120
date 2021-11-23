@@ -155,4 +155,24 @@
        rect(20,380,20,80);
        fill('#A81D1D');
        rect(0,380,20,80);
-  a
+     }
+     function youWin(){
+       if (horizontalMove <=20 && verticalMove >=380 && verticalMove <= 460 ) {
+         winMessage("player1");
+
+       }
+       if (horizontalMove2 <=20 && verticalMove2 >=380 && verticalMove2 <= 460 ) {
+         winMessage("player2");
+
+       }
+     }
+     function winMessage(winner){
+       fill(0);
+       stroke(5);
+       textSize(50);
+       fill('#FFFFFF');
+       text( winner +" winner winner", 200, 350);
+     }
+     </script>
+   </head>
+ </html>
