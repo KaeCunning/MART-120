@@ -1,0 +1,267 @@
+<html>
+  <head>
+    <title>LilGame</title>
+  <body>
+  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+    <script>
+
+    var obstacleArray = [];
+    var obstacleArrayX = [];
+    var obstacleArrayY = [];
+    var obstacleArraySide = [];
+    var obstacleArrayCorner = [];
+
+    obstacleArrayX[0] = 30;
+    obstacleArrayY[0] = 30;
+    obstacleArraySide[0] = 55;
+    obstacleArrayCorner[0] = 20;
+
+    obstacleArrayX[1] = 80;
+    obstacleArrayY[1] = 80;
+    obstacleArraySide[1] = 55;
+    obstacleArrayCorner[1] = 20;
+
+    obstacleArrayX[2] = 130;
+    obstacleArrayY[2] = 130;
+    obstacleArraySide[2] = 55;
+    obstacleArrayCorner[2] = 20;
+
+    obstacleArrayX[3] = 180;
+    obstacleArrayY[3] = 180;
+    obstacleArraySide[3] = 55;
+    obstacleArrayCorner[3] = 20;
+
+    obstacleArrayX[4] = 230;
+    obstacleArrayY[4] = 230;
+    obstacleArraySide[4] = 55;
+    obstacleArrayCorner[4] = 20;
+
+    var mouseShapeX = 50;
+    var mouseShapeY = 50;
+
+    var triOneMove1 = 100;
+    var triOneMove2 = 80;
+    var triOneMove3 = 120;
+
+    var triTwoMove1 = 225;
+    var triTwoMove2 = 200;
+    var triTwoMove3 = 200;
+
+    var horizontalMove = 650;
+    var verticalMove = 380;
+    var youColor = '#0A931D';
+    var squareSideLength = 20;
+
+    var horizontalMove2 = 650;
+    var verticalMove2 = 350;
+    var buddyColor ='#1948FF';
+
+    var moveAmount = 3;
+    var moveAmountSlow = 1.25;
+
+
+    function setup() {
+    createCanvas(800, 800);
+    }
+    function obstacleSetup() {
+    obstacleArray[0] = square(obstacleArrayX[0],obstacleArrayY[0],obstacleArraySide[0],obstacleArrayCorner[0]);
+    obstacleArray[1] = square(obstacleArrayX[1],obstacleArrayY[1],obstacleArraySide[1],obstacleArrayCorner[1]);
+    obstacleArray[2] = square(obstacleArrayX[2],obstacleArrayY[2],obstacleArraySide[2],obstacleArrayCorner[2]);
+    obstacleArray[3] = square(obstacleArrayX[3],obstacleArrayY[3],obstacleArraySide[3],obstacleArrayCorner[3]);
+    obstacleArray[4] = square(obstacleArrayX[4],obstacleArrayY[4],obstacleArraySide[4],obstacleArrayCorner[4]);
+    obstacleMove(obstacleArray);
+    }
+    function obstacleMove(obstacles) {
+      for (var i = 0; i < obstacles.length; i++) {
+        if (obstacleArrayX[i]>= 700)
+         {
+           obstacleArrayX[i]= 30;
+           obstacleArrayY[i]= 50;
+
+         }
+
+        if (obstacleArrayX[i]<=745) {
+        obstacleArrayX[0]=obstacleArrayX[0]+moveAmountSlow;
+        obstacleArrayX[1]=obstacleArrayX[1]+moveAmountSlow;
+        obstacleArrayX[2]=obstacleArrayX[2]+moveAmountSlow;
+        obstacleArrayX[3]=obstacleArrayX[3]+moveAmountSlow;
+        obstacleArrayX[4]=obstacleArrayX[4]+moveAmountSlow;
+       }
+
+     }
+
+
+
+
+
+
+
+
+/*
+      if (triOneMove3 >= 758)
+       {
+         sqOneMove1= 30;
+         sOneMove2= 10;
+         tOneMove3= 50;
+
+       }
+      if (triOneMove1<=745) {
+      triOneMove1=triOneMove1+moveAmount;
+      triOneMove2=triOneMove2+moveAmount;
+      triOneMove3=triOneMove3+moveAmount;
+      }
+      if (triTwoMove1 >= 755 )
+       {
+         triTwoMove1= 50;
+         triTwoMove2= 25;
+         triTwoMove3= 25;
+
+       }
+      if (triTwoMove1<=800) {
+      triTwoMove1=triTwoMove1+moveAmount;
+      triTwoMove2=triTwoMove2+moveAmount;
+      triTwoMove3=triTwoMove3+moveAmount;
+       }
+     }*/
+    }
+    function draw()
+     {
+      createMap();
+      //you're character
+      player(youColor,horizontalMove,verticalMove,squareSideLength);
+      //player 2
+      player(buddyColor,horizontalMove2,verticalMove2,squareSideLength);
+      obstacleSetup();
+      circleClick();
+      //enemies
+      createEnemies();
+      mapGoal();
+      youWin();
+      playerMovement();
+
+
+     }
+     function createMap(){
+       background(220);
+       fill('#A81D1D');
+       rect(0,0,800,800);
+       fill('#8B1818');
+       rect(30,30,770,777);
+       fill('#000000');
+       rect(30,30,725,725);
+       fill('#CDCC00');
+       circle(775,778,10);
+       circle(20,778,10);
+       circle(775,15,10);
+       circle(20,15,10);
+       fill('#000FCD');
+       circle(700,778,25);
+       circle(500,778,25);
+       fill('#0A931D');
+       circle(400,778,25);
+     }
+
+     function player(color,hmove,vmove,sideLength)
+     {
+       fill(color);
+       square(hmove,vmove,sideLength);
+     }
+     function circleClick(){
+       fill('#8B00FF');
+       circle(mouseShapeX,mouseShapeY,50);
+     }
+     function playerMovement()
+     {
+       if (keyIsDown(83)) {
+         verticalMove+=3;
+       }
+        else if (keyIsDown(87)) {
+         verticalMove-=3;
+       }
+         else if (keyIsDown(68)) {
+         horizontalMove+=3;
+       }
+         else if (keyIsDown(65)) {
+         horizontalMove-=3;
+       }
+       //player2 arrowkeys
+       if (keyIsDown(DOWN_ARROW)) {
+         verticalMove2+=3;
+       }
+        else if (keyIsDown(UP_ARROW)) {
+         verticalMove2-=3;
+       }
+         else if (keyIsDown(RIGHT_ARROW)) {
+         horizontalMove2+=3;
+       }
+         else if (keyIsDown(LEFT_ARROW)) {
+         horizontalMove2-=3;
+       }
+      }
+
+     function createEnemies(){
+       fill('#FF0000');
+       //triangle1
+       triangle(triOneMove1,175,triOneMove2,150,triOneMove3,150);
+       //triangle2
+       fill('#00FFFF');
+       triangle(120,triTwoMove1,80,triTwoMove2,120,triTwoMove3);
+       if (triOneMove3 >= 758)
+        {
+          triOneMove1= 30;
+          triOneMove2= 10;
+          triOneMove3= 50;
+
+        }
+       if (triOneMove1<=745) {
+       triOneMove1=triOneMove1+moveAmount;
+       triOneMove2=triOneMove2+moveAmount;
+       triOneMove3=triOneMove3+moveAmount;
+       }
+       if (triTwoMove1 >= 755 )
+        {
+          triTwoMove1= 50;
+          triTwoMove2= 25;
+          triTwoMove3= 25;
+
+        }
+       if (triTwoMove1<=800 ) {
+       triTwoMove1=triTwoMove1+moveAmount;
+       triTwoMove2=triTwoMove2+moveAmount;
+       triTwoMove3=triTwoMove3+moveAmount;
+       }
+     }
+
+     function mouseClicked(){
+       mouseShapeX= mouseX;
+       mouseShapeY= mouseY;
+     }
+     function mapGoal(){
+       fill('#000000');
+       rect(580,768,50,20);
+       fill('#000000');
+       rect(20,380,20,80);
+       fill('#A81D1D');
+       rect(0,380,20,80);
+     }
+     function youWin(){
+       if (horizontalMove <=20 && verticalMove >=380 && verticalMove <= 460 ) {
+         winMessage("player1");
+
+       }
+       if (horizontalMove2 <=20 && verticalMove2 >=380 && verticalMove2 <= 460 ) {
+         winMessage("player2");
+
+       }
+     }
+     function winMessage(winner){
+       fill(0);
+       stroke(5);
+       textSize(50);
+       fill('#FFFFFF');
+       text( winner +" winner winner", 200, 350);
+     }
+     </script>
+   </head>
+ </html>
